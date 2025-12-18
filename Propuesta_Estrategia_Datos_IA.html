@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Estratégica: Datos e IA - Álvaro Galán</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',    // Slate 900
+                            primary: '#3b82f6', // Blue 500
+                            accent: '#06b6d4',  // Cyan 500
+                            light: '#f8fafc',   // Slate 50
+                            success: '#10b981'  // Emerald 500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px; /* Max width for readability */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        
+        /* Print Optimization */
+        @media print {
+            body { -webkit-print-color-adjust: exact; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+        }
+
+        /* Timeline connector line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 4px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+    <!-- 
+    NO MERMAID JS USED
+    NO SVG USED
+    -->
+    <!-- 
+    NARRATIVE PLAN:
+    1. Header: Professional intro, Client/Provider details.
+    2. Executive Summary: The "Why" - not just code, but strategy.
+    3. Market Value Analysis: Visualizing the 3 key projects and their standalone market cost.
+    4. Economic Proposal: The "Retainer" model vs the Market Cost. Highlighting savings.
+    5. Cost Comparison: Chart showing Employee vs Freelance cost structures.
+    6. Roadmap: 90-Day plan visual timeline.
+    7. Profile: The "Musician/Engineer" differentiator.
+    -->
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased">
+
+    <!-- Main Document Container -->
+    <main class="max-w-5xl mx-auto bg-white shadow-2xl min-h-screen my-0 md:my-8">
+        
+        <!-- Header Section -->
+        <header class="bg-brand-dark text-white p-8 md:p-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-primary opacity-10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+            <div class="relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                    <div>
+                        <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-2">Estrategia de Datos e IA</h1>
+                        <p class="text-brand-accent text-lg md:text-xl font-medium">Digitalización, Automatización y Arquitectura</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right">
+                        <div class="text-sm text-slate-400 uppercase tracking-wider">Preparado para</div>
+                        <div class="text-xl font-bold">Juan Reig</div>
+                        <div class="text-sm text-slate-400 mt-2">Octubre 2025</div>
+                    </div>
+                </div>
+                <div class="border-t border-slate-700 pt-6 flex items-center">
+                    <div class="bg-brand-primary h-12 w-12 rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                        AG
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg">Álvaro Galán</p>
+                        <p class="text-slate-400 text-sm">Ingeniero de Datos & AI Consultant</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Executive Summary -->
+        <section class="p-8 md:p-12 border-b border-slate-200">
+            <h2 class="text-2xl font-bold text-brand-dark mb-4 flex items-center">
+                <span class="bg-brand-accent w-2 h-8 mr-3 block"></span>
+                Resumen Ejecutivo
+            </h2>
+            <p class="text-lg leading-relaxed text-slate-600 mb-6">
+                El objetivo de esta propuesta es formalizar una colaboración estratégica para transformar la empresa mediante datos. No se trata solo de "desarrollar software", sino de implantar un <strong>"Cerebro Corporativo"</strong> escalable.
+            </p>
+            <div class="bg-blue-50 border-l-4 border-brand-primary p-6 rounded-r-lg">
+                <p class="font-semibold text-brand-dark">Propuesta de Valor:</p>
+                <p class="text-slate-700 mt-2">
+                    Actuar como <strong>Data Lead Manager</strong> externo. Gracias al uso intensivo de herramientas de IA (Cursor, LangChain), ofrezco la velocidad de un equipo entero en un solo perfil, reduciendo costes y tiempos de entrega a la mitad.
+                </p>
+            </div>
+        </section>
+
+        <!-- Market Valuation Section -->
+        <section class="p-8 md:p-12 bg-slate-50">
+            <h2 class="text-2xl font-bold text-brand-dark mb-6 flex items-center">
+                <span class="bg-brand-accent w-2 h-8 mr-3 block"></span>
+                1. Valoración de Mercado de los Proyectos
+            </h2>
+            <p class="text-slate-600 mb-8">
+                A continuación, se desglosa el coste estimado de mercado si estos tres proyectos críticos fueran contratados individualmente a una consultora de software externa.
+            </p>
+
+            <!-- Cards for Projects -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-primary">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-lg text-brand-dark">P1: Cerebro RAG</h3>
+                        <span class="bg-blue-100 text-brand-primary text-xs font-bold px-2 py-1 rounded">ALTA PRIORIDAD</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-4">Sistema de IA privado para búsqueda semántica en +1.000 informes. MVP + App Final.</p>
+                    <div class="text-2xl font-bold text-brand-dark">~12.750 €</div>
+                    <div class="text-xs text-slate-400">Valor medio de mercado</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-accent">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-lg text-brand-dark">P2: Voz-a-Reporte</h3>
+                        <span class="bg-cyan-100 text-brand-accent text-xs font-bold px-2 py-1 rounded">AUTOMATIZACIÓN</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-4">Conversión de notas de voz en entregables PDF/PPT estructurados. MVP + App Final.</p>
+                    <div class="text-2xl font-bold text-brand-dark">~8.000 €</div>
+                    <div class="text-xs text-slate-400">Valor medio de mercado</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-dark">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-lg text-brand-dark">P3: Chatbot Clínico</h3>
+                        <span class="bg-slate-200 text-slate-600 text-xs font-bold px-2 py-1 rounded">INTERACTIVO</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-4">Captación de datos mediante casos clínicos y dashboard analítico. MVP + App Final.</p>
+                    <div class="text-2xl font-bold text-brand-dark">~9.250 €</div>
+                    <div class="text-xs text-slate-400">Valor medio de mercado</div>
+                </div>
+            </div>
+
+            <!-- Chart: Market Value -->
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-lg font-semibold text-brand-dark mb-2">Análisis de Valor de Mercado (Desarrollo por Proyecto)</h3>
+                <p class="text-sm text-slate-500 mb-6">Comparativa del valor estimado de mercado para el desarrollo del MVP y la versión final de cada herramienta.</p>
+                <div class="chart-container">
+                    <canvas id="marketValueChart"></canvas>
+                </div>
+                <div class="mt-4 text-center">
+                    <span class="text-brand-success font-bold text-xl">Total Valor de Mercado: > 27.000 €</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Economic Proposal & Savings -->
+        <section class="p-8 md:p-12">
+            <h2 class="text-2xl font-bold text-brand-dark mb-6 flex items-center">
+                <span class="bg-brand-accent w-2 h-8 mr-3 block"></span>
+                2. Propuesta Económica: Modelo "Retainer"
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-slate-600 mb-6">
+                        En lugar de facturar >27.000 € por proyectos aislados, propongo un modelo de <strong>Iguala Mensual (Retainer)</strong>. Esto ofrece flexibilidad total, cero riesgo laboral y un ahorro masivo.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-brand-success mr-3 font-bold">✓</span>
+                            <div>
+                                <strong class="text-brand-dark">Honorarios:</strong> 2.500 € / mes (+ IVA).
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-brand-success mr-3 font-bold">✓</span>
+                            <div>
+                                <strong class="text-brand-dark">Rol Integral:</strong> Data Lead + Ingeniero Full Stack.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-brand-success mr-3 font-bold">✓</span>
+                            <div>
+                                <strong class="text-brand-dark">Flexibilidad:</strong> Sin permanencia tras el periodo inicial.
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="bg-brand-dark text-white p-6 rounded-lg text-center shadow-lg">
+                        <p class="text-sm opacity-80 uppercase tracking-widest mb-2">Ahorro Anual Estimado</p>
+                        <p class="text-4xl font-bold text-brand-accent">15.000 €</p>
+                        <p class="text-xs opacity-70 mt-2">vs. Contratación en Nómina</p>
+                    </div>
+                </div>
+
+                <!-- Chart: Cost Comparison -->
+                <div class="bg-slate-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-brand-dark mb-2">Comparativa de Costes Anuales</h3>
+                    <p class="text-sm text-slate-500 mb-6">Coste total para la empresa: Freelance vs Empleado en Nómina (Salario + Seguridad Social).</p>
+                    <div class="chart-container">
+                        <canvas id="costComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 90-Day Timeline -->
+        <section class="p-8 md:p-12 bg-slate-50">
+            <h2 class="text-2xl font-bold text-brand-dark mb-10 flex items-center">
+                <span class="bg-brand-accent w-2 h-8 mr-3 block"></span>
+                3. Hoja de Ruta: Los Primeros 90 Días
+            </h2>
+
+            <div class="relative timeline-line">
+                <!-- Month 1 -->
+                <div class="relative z-10 mb-12 md:w-1/2 md:ml-auto md:pl-12 pl-12 group">
+                    <div class="absolute left-0 md:left-0 top-0 w-10 h-10 bg-brand-primary rounded-full border-4 border-white shadow flex items-center justify-center font-bold text-white md:-translate-x-1/2 -translate-x-1/2">
+                        1
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border-l-4 border-brand-primary">
+                        <h3 class="font-bold text-xl text-brand-primary mb-2">MES 1: El Core & Infraestructura</h3>
+                        <p class="text-sm text-slate-600 mb-4">Establecimiento de las bases seguras y primera entrega de valor.</p>
+                        <ul class="text-sm text-slate-700 space-y-2">
+                            <li>• Configuración de entorno local seguro.</li>
+                            <li>• Ingesta de datos.</li>
+                            <li>• <strong>Entrega: MVP "Cerebro Corporativo"</strong> (Búsqueda en 1000 informes).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Month 2 -->
+                <div class="relative z-10 mb-12 md:w-1/2 md:pr-12 pl-12 md:pl-0 md:text-right group">
+                    <div class="absolute left-0 md:left-full top-0 w-10 h-10 bg-brand-accent rounded-full border-4 border-white shadow flex items-center justify-center font-bold text-white md:-translate-x-1/2 -translate-x-1/2">
+                        2
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border-l-4 border-brand-accent md:border-l-0 md:border-r-4">
+                        <h3 class="font-bold text-xl text-brand-accent mb-2">MES 2: Automatización</h3>
+                        <p class="text-sm text-slate-600 mb-4">Refinamiento basado en feedback y automatización de procesos manuales.</p>
+                        <ul class="text-sm text-slate-700 space-y-2 inline-block text-left">
+                            <li>• Refinamiento del buscador con usuarios reales.</li>
+                            <li>• Desarrollo Pipeline Whisper (Audio a Texto).</li>
+                            <li>• <strong>Entrega: Sistema "Voz a Presupuesto"</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Month 3 -->
+                <div class="relative z-10 md:w-1/2 md:ml-auto md:pl-12 pl-12 group">
+                    <div class="absolute left-0 md:left-0 top-0 w-10 h-10 bg-brand-dark rounded-full border-4 border-white shadow flex items-center justify-center font-bold text-white md:-translate-x-1/2 -translate-x-1/2">
+                        3
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border-l-4 border-brand-dark">
+                        <h3 class="font-bold text-xl text-brand-dark mb-2">MES 3: Expansión & Clínica</h3>
+                        <p class="text-sm text-slate-600 mb-4">Implementación de herramientas de interacción compleja.</p>
+                        <ul class="text-sm text-slate-700 space-y-2">
+                            <li>• Implementación del Chatbot Clínico Interactivo.</li>
+                            <li>• Dashboard de análisis de datos captados.</li>
+                            <li>• Evaluación de siguientes pasos (Webscrapers).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile / Why Me -->
+        <section class="p-8 md:p-12 border-t border-slate-200">
+            <h2 class="text-2xl font-bold text-brand-dark mb-6">¿Por qué este perfil?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-slate-600 mb-4 leading-relaxed">
+                        Aporto una combinación única de <strong>Ingeniería Técnica (UPM)</strong> y experiencia corporativa en multinacionales como <strong>Publicis Groupe</strong>, donde gestioné pipelines ETL masivos y soluciones NLP.
+                    </p>
+                    <p class="text-slate-600 mb-4 leading-relaxed">
+                        Además, mi carrera paralela como Músico Profesional me ha dotado de una disciplina de alto rendimiento difícil de encontrar en perfiles puramente técnicos.
+                    </p>
+                </div>
+                <div class="bg-brand-dark text-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-brand-accent font-bold text-lg mb-3">El Factor Diferencial: IA Productivity</h3>
+                    <p class="text-sm opacity-90 mb-4">
+                        Uso herramientas avanzadas (Cursor, LangChain) que multiplican la velocidad de desarrollo.
+                    </p>
+                    <!-- Simple productivity visual -->
+                    <div class="mb-2">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span>Dev Tradicional</span>
+                            <span>40h</span>
+                        </div>
+                        <div class="w-full bg-slate-700 rounded-full h-2">
+                            <div class="bg-slate-400 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-brand-accent font-bold">Mi Flujo (IA Enhanced)</span>
+                            <span class="text-brand-accent font-bold">20h</span>
+                        </div>
+                        <div class="w-full bg-slate-700 rounded-full h-2">
+                            <div class="bg-brand-accent h-2 rounded-full" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <p class="text-xs mt-3 italic opacity-70">Mismo resultado, mitad de tiempo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-white p-8 md:p-12 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">¿Empezamos?</h3>
+                    <p class="text-slate-400">Estoy listo para comenzar la ingesta de datos y el montaje del entorno local de inmediato.</p>
+                </div>
+                <div class="md:text-right space-y-2">
+                    <p class="font-bold text-lg">Álvaro Galán</p>
+                    <p class="text-brand-primary">+34 664 517 100</p>
+                    <p class="text-slate-400">alvaro.galan.are@gmail.com</p>
+                    <p class="text-slate-400">www.aiblop.com</p>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 no-print">
+                Para guardar como PDF: Presiona Ctrl+P (Windows) o Cmd+P (Mac) y selecciona "Guardar como PDF".
+            </div>
+        </footer>
+    </main>
+
+    <!-- Scripts for Charts -->
+    <script>
+        // --- DATA PREPARATION ---
+        
+        // Label processing function (split long labels)
+        function processLabels(labels) {
+            return labels.map(label => {
+                if (label.length > 16) {
+                    return label.split(' '); // Simple split by space for this specific dataset
+                }
+                return label;
+            });
+        }
+
+        // --- CHART 1: MARKET VALUE ---
+        const marketCtx = document.getElementById('marketValueChart').getContext('2d');
+        const marketLabels = ['Cerebro Corporativo (RAG)', 'Voz-a-Reporte Auto', 'Chatbot Clínico'];
+        const processedMarketLabels = processLabels(marketLabels);
+
+        // Data: Average estimated market value
+        const marketData = [12750, 8000, 9250]; 
+        // 12750 is avg of 11.5k-14k
+        // 8000 is avg of 7k-9k
+        // 9250 is avg of 8.5k-10k
+
+        new Chart(marketCtx, {
+            type: 'bar',
+            data: {
+                labels: processedMarketLabels,
+                datasets: [{
+                    label: 'Valor de Mercado Estimado (€)',
+                    data: marketData,
+                    backgroundColor: [
+                        '#3b82f6', // brand-primary
+                        '#06b6d4', // brand-accent
+                        '#0f172a'  // brand-dark
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) return label.join(' ');
+                                return label;
+                            },
+                            label: function(context) {
+                                return context.raw.toLocaleString('es-ES') + ' €';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) { return value + ' €'; }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- CHART 2: COST COMPARISON ---
+        const costCtx = document.getElementById('costComparisonChart').getContext('2d');
+        const costLabels = ['Coste Anual Empleado', 'Propuesta Freelance'];
+        
+        // Data derived from source text
+        const costData = [45000, 30000]; 
+        // 45000 = ~32k salary + 10.2k SS + overheads
+        // 30000 = 2500 * 12
+
+        new Chart(costCtx, {
+            type: 'bar',
+            data: {
+                labels: costLabels,
+                datasets: [{
+                    label: 'Coste Anual (€)',
+                    data: costData,
+                    backgroundColor: [
+                        '#ef4444', // Red for higher cost/employee
+                        '#10b981'  // Green for savings/freelance
+                    ],
+                    barPercentage: 0.6,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y', // Horizontal bar for better comparison layout
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                return item.chart.data.labels[item.dataIndex];
+                            },
+                            label: function(context) {
+                                return context.raw.toLocaleString('es-ES') + ' €';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) { return value / 1000 + 'k €'; }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
